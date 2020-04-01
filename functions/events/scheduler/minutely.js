@@ -22,7 +22,7 @@ module.exports = async () => {
   result.halo.gameHistory = await lib.halo.mcc['@0.0.10'].games.latest({
     gamertag: GAMERTAG,
     game: 'Halo: Reach',
-    gameType: 'All'
+    gameVariant: 'All'
   });
 
   console.log(`Seeing if we've stored the latest game time...`);
