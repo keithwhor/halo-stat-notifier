@@ -3,6 +3,11 @@
 
 ✨ Welcome to the **Halo: Master Chief Collection Stat Notifier**!
 
+Made this during March 2020 -- if you're fortunate enough to be healthy,
+sometimes social distancing can get boring, and instead of texting my buddies to
+play Halo with me I put the effort in to write an automatic notification system
+around the Halo: MCC API. I hope you find it useful and / or fun!
+
 This project uses publicly-available Halo: MCC game info and player stats to send
 SMS messages to your squad (friends) when you start playing Halo: Reach, tells
 them your stats, and then updates you on your stats after every game.
