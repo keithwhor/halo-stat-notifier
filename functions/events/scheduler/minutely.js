@@ -1,6 +1,7 @@
 const lib = require('lib')({token: process.env.STDLIB_SECRET_TOKEN});
 const PHONE_NUMBERS = process.env.PHONE_NUMBERS.split(',');
 const GAMERTAG = process.env.GAMERTAG;
+const FORCE_MESSAGE = false;
 
 /**
 * An HTTP endpoint that acts as a webhook for Scheduler minutely event
@@ -10,29 +11,31 @@ module.exports = async () => {
 
   // Store API Responses
   const result = {halo: {}, utils: {}};
-    
+
   console.log(`Retrieving latest Halo: Reach game...`);
   result.halo.gameHistory = await lib.halo.mcc['@0.0.10'].games.latest({
     gamertag: GAMERTAG,
     game: 'Halo: Reach',
     gameType: 'All'
   });
-  
+
   console.log(`Seeing if we've stored the latest game time...`);
   let lastGameTime = await lib.utils.kv['@0.1.16'].get({
     key: `Halo:LastGameAt`,
     defaultValue: ``
   });
 
-  if (result.halo.gameHistory.games.length && lastGameTime !== result.halo.gameHistory.games[0].playedAt) {
-  
+  // Make sure `FORCE_MESSAGE` is `false` before deploying.
+  // Change to `true` above if you want to debug message sending.
+  if (FORCE_MESSAGE || (result.halo.gameHistory.games.length && lastGameTime !== result.halo.gameHistory.games[0].playedAt)) {
+
     // This is a new game...
     console.log(`Store latest game time...`);
     result.utils.ok = await lib.utils.kv['@0.1.16'].set({
       key: `Halo:LastGameAt`,
       value: result.halo.gameHistory.games[0].playedAt
     });
-    
+
     // If it's a new session, text everyone
     // Otherwise, just text me the results of the game
     let phoneNumbers = [];
@@ -52,7 +55,7 @@ module.exports = async () => {
       console.log(`Messaging for an existing gaming session (just you)...`);
       phoneNumbers = PHONE_NUMBERS.slice(0, 1);
     }
-    
+
     console.log(`Texting me my game results...`);
     await Promise.all(phoneNumbers.map(phone => {
       return lib.utils.sms['@1.0.11']({
@@ -64,11 +67,15 @@ module.exports = async () => {
           `💥 Kills: ${result.halo.gameHistory.games[0].kills}\n` +
           `☠️ Deaths: ${result.halo.gameHistory.games[0].deaths}\n` +
           `🔫 KD: ${result.halo.gameHistory.games[0].killDeathRatio.toFixed(2)}\n\n` +
-          `🕒 ${result.halo.gameHistory.games[0].playedAtRecency}` + 
+          `🕒 ${result.halo.gameHistory.games[0].playedAtRecency}` +
           `${newSessionFooter}`
       });
     }));
-    
+
+  } else {
+
+    console.log(`No message sent. If you need to debug, try setting FORCE_MESSAGE to true.`);
+
   }
 
   return result;
