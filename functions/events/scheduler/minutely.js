@@ -1,13 +1,19 @@
 const lib = require('lib')({token: process.env.STDLIB_SECRET_TOKEN});
-const PHONE_NUMBERS = process.env.PHONE_NUMBERS.split(',');
+const PHONE_NUMBERS = (process.env.PHONE_NUMBERS || '').split(',');
 const GAMERTAG = process.env.GAMERTAG;
-const FORCE_MESSAGE = false;
+const FORCE_MESSAGE = false; // Force a message. For debug only.
 
 /**
 * An HTTP endpoint that acts as a webhook for Scheduler minutely event
 * @returns {object} result Your return value
 */
 module.exports = async () => {
+
+  if (!GAMERTAG) {
+    throw new Error(`GAMERTAG not set. Please set in "env.json".`);
+  } else if (!PHONE_NUMBERS) {
+    throw new Error(`PHONE_NUMBERS not set. Please set in "env.json".`);
+  }
 
   // Store API Responses
   const result = {halo: {}, utils: {}};
