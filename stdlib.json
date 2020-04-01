@@ -1,0 +1,21 @@
+{
+  "name": "keith/halo-stat-notifier",
+  "version": "0.0.0",
+  "timeout": 30000,
+  "connector": false,
+  "events": {
+    "functions/events/scheduler/minutely.js": {
+      "name": "scheduler.minutely"
+    }
+  },
+  "env": [
+    {
+      "name": "GAMERTAG",
+      "description": "Your XBL Gamertag"
+    },
+    {
+      "name": "PHONE_NUMBERS",
+      "description": "Comma-separated list of #s to notify. Yours should be first."
+    }
+  ]
+}

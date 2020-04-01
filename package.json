@@ -1,0 +1,8 @@
+{
+  "name": "halo-stat-notifier",
+  "author": "Keith Horwood <keith@polybit.com>",
+  "publish": false,
+  "dependencies": {
+    "lib": "latest"
+  }
+}
