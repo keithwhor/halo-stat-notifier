@@ -48,17 +48,17 @@ From here, you'll be prompted with **Environment Variables**. You'll want to use
 
 Next, just name your project and hit **Start API Project from GitHub**.
 
-<img src="/readme/deploy-from-github.png" width="256">
+<img src="/readme/deploy-from-github.png" width="384">
 
 
 **NOTE:** Your project **IS NOT YET DEPLOYED**. You can test it by navigating to `functions/events/scheduler/minutely.js`
   and clicking **Run Code**.
 
-<img src="/readme/run-code.png" width="256">
+<img src="/readme/run-code.png" width="384">
 
 You can Deploy at any time from the **Deploy** button in the bottom left corner of Autocode's IDE:
 
-<img src="/readme/deploy.png" width="256">
+<img src="/readme/deploy.png" width="384">
 
 ## How Can I Make Changes?
 
