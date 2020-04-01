@@ -16,6 +16,8 @@ All of the code here is fully configurable and can also be downloaded and run lo
 
 <img src="/readme/halo-stat-sms.jpg" width="256">
 
+<img src="/readme/squad.jpg" width="256">
+
 ## How does the Stat Notifier work?
 
 The Stat Notifier code can be found in `functions/events/scheduler/minutely.js`,
