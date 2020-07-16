@@ -1,5 +1,5 @@
 # <img src="/readme/masterchief-circle.png" width="32"> Halo: MCC Stat Notifier
-[<img src="https://deploy.stdlib.com/static/images/deploy.svg?" width="192">](https://deploy.stdlib.com/)
+[<img src="https://open.autocode.com/static/images/open.svg?" width="192">](https://open.autocode.com/)
 
 ✨ Welcome to the **Halo: Master Chief Collection Stat Notifier**!
 
