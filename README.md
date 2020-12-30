@@ -45,7 +45,7 @@ minute via [Standard Library](https://stdlib.com/).
 Installation is simple. You can click on the button below to instantly open this
 project in Autocode.
 
-[<img src="https://deploy.stdlib.com/static/images/deploy.svg?" width="192">](https://deploy.stdlib.com/)
+[<img src="https://open.autocode.com/static/images/open.svg?" width="192">](https://open.autocode.com/)
 
 From here, you'll be prompted with **Environment Variables**. You'll want to use the following:
 
